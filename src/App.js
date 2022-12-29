@@ -12,44 +12,67 @@ function App() {
   }
 
   function minus(e) {
-    // Add the code for the minus function
+    e.preventDefault();
+    setResult((result) => result - Number(inputRef.current.value));
   }
 
   function times(e) {
-    // Add the code for the plus function
+    e.preventDefault();
+    setResult((result) => result * Number(inputRef.current.value));
   }
 
   function divide(e) {
-    // Add the code for the divide function
+    e.preventDefault();
+    setResult((result) => result / Number(inputRef.current.value));
   }
 
   function resetInput(e) {
-    // Add the code for the resetInput function
+    e.preventDefault();
+    inputRef.current.value = 0;
   }
 
   function resetResult(e) {
-    // Add the code for the resetResult function
+    e.preventDefault();
+    setResult(() => setResult(0));
   }
 
   return (
     <div className="App">
-      <div>
-        <h1>Basic Calculator</h1>
-      </div>
-      <form>
-        <p ref={resultRef}>{/* add the value of the current total */}</p>
+      <h1 className="Titles">Basic Calculator</h1>
+      <div className="Results">
+        <h3 ref={resultRef}>Result : {result}</h3>
         <input
           pattern="[0-9]"
           ref={inputRef}
           type="number"
-          placeholder="Type a number"
+          placeholder="Type here"
         />
-        <button onClick={plus}>add</button>
-        <button onClick={minus}>subtract</button>
-        <button onClick={times}>multiply</button>
-        <button onClick={divide}>divide</button>
-        <button onClick={resetInput}>resetInput</button>
-        <button onClick={resetResult}>resetResult</button>
+      </div>
+      <form className="Button">
+        <button onClick={plus} className="col">
+          add
+        </button>
+        <button onClick={minus} className="col">
+          subtract
+        </button>
+      </form>
+      <form className="Button">
+        <button onClick={times} className="col">
+          multiply
+        </button>
+        <button onClick={divide} className="col">
+          divide
+        </button>
+      </form>
+      <form className="Button">
+        <button onClick={resetInput} className="col-single">
+          resetInput
+        </button>
+      </form>
+      <form className="Button">
+        <button onClick={resetResult} className="col-single">
+          resetResult
+        </button>
       </form>
     </div>
   );
